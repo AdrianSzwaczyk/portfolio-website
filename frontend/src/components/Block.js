@@ -11,9 +11,10 @@ const Block = ({ position, dimensions, color }) => {
 
     useFrame(({ clock }) => {
         const elapsedTime = clock.getElapsedTime();
-        const emissiveIntensity = hovered ? 1 : (Math.sin(elapsedTime) + 1) / 2; // Oscillates between 0 and 1
+        const emissiveIntensity = hovered ? 1 : (Math.sin(elapsedTime) + 1) / 2; // Stronger glow when hovered
         if (edgesRef.current) {
-            edgesRef.current.material.color = new THREE.Color(color).multiplyScalar(emissiveIntensity);
+            edgesRef.current.material.color = hovered ? new THREE.Color('white') : new THREE.Color(color).multiplyScalar(emissiveIntensity);
+            edgesRef.current.layers.set(hovered ? 1 : 0); // Add edges to bloom layer when hovered
         }
     });
 
