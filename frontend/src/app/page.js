@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Scene from "../scene/Scene"; // Import Three.js scene
 
 export default function Home() {
@@ -26,8 +25,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen relative overflow-hidden">
       <Scene /> {/* Three.js Scene as background */}
-      <Navbar introComplete={introComplete} />
-      <div className="large-container"></div> {/* Large container to enable scrolling */}
+      <div style={{ height: '200vh' }}></div> {/* Large container to enable scrolling */}
     </main>
   );
 }
